@@ -1,40 +1,80 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Neon Enterprise Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<body>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<div id="authBox" class="card center">
+  <h1 class="neon">NEON LOGIN</h1>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <button onclick="register()">Register</button>
+  <button onclick="login()">Login</button>
+</div>
+
+<div id="dashboard" style="display:none;">
+
+  <div class="topbar neon">
+    🚀 NEON ENTERPRISE DASHBOARD
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>IP USER</h3>
+      <p id="ip">Loading...</p>
+    </div>
+
+    <div class="card">
+      <h3>ANALYTICS</h3>
+      <p>User: <span id="totalUser">0</span></p>
+      <p>Order: <span id="totalOrder">0</span></p>
+      <p>Chat: <span id="totalChat">0</span></p>
+    </div>
+
+    <div class="card">
+      <h3>ANTI PHISHING CHECK</h3>
+      <input id="urlCheck" placeholder="https://example.com">
+      <button onclick="checkPhishing()">Check</button>
+      <p id="phishResult"></p>
+    </div>
+
+    <div class="card">
+      <h3>FORM ORDER</h3>
+
+      <select id="orderType">
+        <option>PINJAMAN ONLINE</option>
+        <option>PRODUK DIGITAL</option>
+        <option>RENTAL KENDARAAN</option>
+      </select>
+
+      <input id="orderName" placeholder="Nama">
+      <button onclick="createOrder()">Kirim Order</button>
+    </div>
+
+    <div class="card">
+      <h3>LIVE CHAT</h3>
+      <input id="chatMsg" placeholder="Chat...">
+      <button onclick="sendChat()">Kirim</button>
+      <div id="chatBox"></div>
+    </div>
+
+    <div class="card">
+      <h3>GRAFIK SAHAM (SIMULASI REALTIME)</h3>
+      <canvas id="chart"></canvas>
+    </div>
+
+  </div>
+
+</div>
+
+<script type="module" src="app.js"></script>
+
+</body>
 </html>
